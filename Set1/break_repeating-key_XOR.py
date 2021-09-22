@@ -33,11 +33,11 @@ def singleXOR(cipher):
     return j
 
 def repeatXOR(ciph, key="ICE"):
-    """En-De bytes with repeating-key XOR bytes, return str"""
+    """En-De bytes with repeating-key XOR bytes, return bytes"""
     result = bytes()
     for i in range(0, len(ciph), 1):
         result += bytes([ord(ciph[i:i+1]) ^ ord(key[i % len(key)])])
-    return result.decode()
+    return result
 
 if __name__ == '__main__':
     # https://cryptopals.com/sets/1/challenges/6
@@ -78,6 +78,6 @@ if __name__ == '__main__':
         print(f"[+] Key may be : {keys}")
     # key:  Terminator X: Bring the noise
 
-    print(repeatXOR(ciph, key="Terminator X: Bring the noise"))
+    print(repeatXOR(ciph, key="Terminator X: Bring the noise").decode())
     # "I'm back and I'm ringin' the bell
     # A rockin' on the mike while the fly girls yell......"
